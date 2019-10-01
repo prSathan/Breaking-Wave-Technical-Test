@@ -36,6 +36,12 @@ fetch(
       "microservice-controller"
     );
     microserviceController.innerHTML = res;
+
+    if(res.includes("pass")){
+        microserviceController.style.color = "green";
+    }else if(res.includes("fail")){
+        microserviceController.style.color = "red";
+    }
   })
   .catch(err => console.log("error occured", err));
 
@@ -46,6 +52,13 @@ fetch(
   .then(res => res.json())
   .then(res => {
     const transactionMonitor = document.getElementById("transaction-monitor");
-    transactionMonitor.innerHTML = res.status;
+    const colorPicker = document.getElementById("color-picker");
+    if(res.status === "up"){
+        transactionMonitor.innerHTML = res.status;
+        colorPicker.style.color = "green";
+    }else{
+        transactionMonitor.innerHTML = "Server Down";
+        colorPicker.style.color = "red";
+    }
   })
   .catch(err => console.log("error occured", err));
