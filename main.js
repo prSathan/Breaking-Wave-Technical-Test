@@ -32,9 +32,7 @@ fetch(
 )
   .then(res => res.text())
   .then(res => {
-    const microserviceController = document.getElementById(
-      "microservice-controller"
-    );
+    const microserviceController = document.getElementById("microservice-controller");
     microserviceController.innerHTML = res;
 
     if (res.includes("pass")) {
